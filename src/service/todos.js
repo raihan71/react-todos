@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const todoService = axios.create({
-  baseURL: process.env.REACT_APP_HOST || 'https://my-json-server.typicode.com/raihan71/react-todos-be'
+  baseURL: process.env.REACT_APP_HOST || 'https://react-todos-be.vercel.app/'
 });
 
 export const getTodos = async () => {
