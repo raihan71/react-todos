@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { TableView, TableHeader, TableBody, Column, Row, Cell, } from '@react-spectrum/table';
 import { Button } from '@react-spectrum/button';
 import { Flex } from '@react-spectrum/layout';
+import { Well } from '@react-spectrum/well';
 import { TextField } from '@react-spectrum/textfield';
 import { Form } from '@react-spectrum/form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,9 +17,6 @@ const TodoList = () => {
   const queryClient = useQueryClient();
 
   const {
-    isLoading,
-    isError,
-    error,
     data: todos
   } = useQuery('todos', getTodos, {
     select: data => data.sort((a, b) => b.id - a.id)
@@ -87,44 +85,48 @@ const TodoList = () => {
 
   return (
     <>
-      {renderFormSubmit}
-      <TableView
-        aria-label="Example table with static contents"
-      >
-        <TableHeader>
-          <Column>Title</Column>
-          <Column>Status</Column>
-          <Column>Action</Column>
-        </TableHeader>
-        <TableBody renderEmptyState={() => 'No results found.'}>
-          {todos?.map((todo,index) => (
-            <Row key={index}>
-                <Cell>
-                  {todo?.title}
-                </Cell>
-                <Cell>{todo?.completed ? (
-                  <Button onPress={() => handleSetCompleted(todo)} width="size-100" UNSAFE_style={{ background: '#008000', cursor: 'pointer' }} staticColor="black" style={`fill`} aria-label="Set complete">
-                    <FontAwesomeIcon icon={faCheckCircle} />
+      <Well>
+        {renderFormSubmit}
+      </Well>
+      <Well>
+        <TableView
+          aria-label="Table list of todos"
+        >
+          <TableHeader>
+            <Column isRowHeader>Title</Column>
+            <Column isRowHeader>Status</Column>
+            <Column isRowHeader>Action</Column>
+          </TableHeader>
+          <TableBody renderEmptyState={() => 'No results found.'}>
+            {todos?.map((todo,index) => (
+              <Row key={index}>
+                  <Cell>
+                    {todo?.title}
+                  </Cell>
+                  <Cell>{todo?.completed ? (
+                    <Button onPress={() => handleSetCompleted(todo)} width="size-100" UNSAFE_style={{ background: '#008000', cursor: 'pointer' }} staticColor="black" style={`fill`} aria-label="Set uncomplete">
+                      <FontAwesomeIcon icon={faCheckCircle} />
+                    </Button>
+                  ) : (
+                    <Button onPress={() => handleSetCompleted(todo)} width="size-100" variant="accent" style={`fill`} aria-label="Set complete" UNSAFE_style={{ cursor: 'pointer' }}>
+                    <FontAwesomeIcon icon={faClock} />
                   </Button>
-                ) : (
-                  <Button onPress={() => handleSetCompleted(todo)} width="size-100" variant="accent" style={`fill`} aria-label="Unset complete" UNSAFE_style={{ cursor: 'pointer' }}>
-                  <FontAwesomeIcon icon={faClock} />
-                </Button>
-                )}</Cell>
-                <Cell>
-                  <Flex direction="row" gap="size-200">
-                    <Button onPress={() => handleDelete(todo?.id)} width="size-100" UNSAFE_style={{ cursor: 'pointer' }} variant="negative" style={`fill`} aria-label="Delete data">
-                      <FontAwesomeIcon icon={faTrashCan} />
-                    </Button>
-                    <Button onPress={() => handleUpdate(todo)} width="size-100"  UNSAFE_style={{ cursor: 'pointer' }} variant="secondary" aria-label="Edit data">
-                      <FontAwesomeIcon icon={faPencilAlt} />
-                    </Button>
-                  </Flex>
-                </Cell>
-            </Row>
-          ))}
-        </TableBody>
-      </TableView>
+                  )}</Cell>
+                  <Cell>
+                    <Flex direction="row" gap="size-200">
+                      <Button onPress={() => handleDelete(todo?.id)} width="size-100" UNSAFE_style={{ cursor: 'pointer' }} variant="negative" style={`fill`} aria-label="Delete data">
+                        <FontAwesomeIcon icon={faTrashCan} />
+                      </Button>
+                      <Button onPress={() => handleUpdate(todo)} width="size-100"  UNSAFE_style={{ cursor: 'pointer' }} variant="secondary" aria-label="Edit data">
+                        <FontAwesomeIcon icon={faPencilAlt} />
+                      </Button>
+                    </Flex>
+                  </Cell>
+              </Row>
+            ))}
+          </TableBody>
+        </TableView>
+      </Well>
     </>
   );
 }

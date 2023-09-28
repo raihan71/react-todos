@@ -6,6 +6,7 @@ export const useDarkMode = () => {
   const setMode = mode => {
     window.localStorage.setItem('theme', mode)
     setTheme(mode)
+    document.body.setAttribute("data-theme", `${mode}`)
   };
 
   const toggleTheme = () => {
@@ -20,6 +21,7 @@ export const useDarkMode = () => {
     const localTheme = window.localStorage.getItem('theme');
     if (localTheme) {
       setTheme(localTheme);
+      document.body.setAttribute("data-theme", `${localTheme}`)
     } else {
       setMode('light');
     }
