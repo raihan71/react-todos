@@ -25,17 +25,26 @@ const TodoList = () => {
   const addTodoMutation = useMutation(addTodo, {
     onSuccess: () => {
       queryClient.invalidateQueries("todos");
-    }
+    },
+    onError: () => {
+      queryClient.invalidateQueries("todos");
+    },
   });
   const editTodoMutation = useMutation(updateTodo, {
     onSuccess: () => {
       queryClient.invalidateQueries("todos");
-    }
+    },
+    onError: () => {
+      queryClient.invalidateQueries("todos");
+    },
   });
   const deleteTodoMutation = useMutation(deleteTodo, {
     onSuccess: () => {
       queryClient.invalidateQueries("todos");
-    }
+    },
+    onError: () => {
+      queryClient.invalidateQueries("todos");
+    },
   });
   const handleSubmit = (e) => {
     e.preventDefault();
