@@ -1,3 +1,4 @@
+/* eslint-disable react/style-prop-object */
 import React, { Component } from 'react';
 import { Button, ActionButton } from '@react-spectrum/button';
 import { ActionMenu, Item } from '@react-spectrum/menu';
