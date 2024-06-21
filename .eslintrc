@@ -1,0 +1,6 @@
+{
+  "extends": ["plugin:jsx-a11y/strict" ],
+  "rules": {
+    // Add custom rules here
+  }
+}

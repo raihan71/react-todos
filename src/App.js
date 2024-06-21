@@ -35,6 +35,8 @@ function App() {
                 <Spectrum />
               </Route>
             </Flex>
+            <input type="checkbox" id="promo"></input>
+            <label>Promo</label>
           </main>
           <View paddingY="size-250">
             <Footer><Foot /></Footer>
