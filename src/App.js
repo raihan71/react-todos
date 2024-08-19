@@ -9,6 +9,7 @@ import Route from './feature/components/Route';
 import Home from './views/home';
 import About from './views/about';
 import Spectrum from './views/spectrum';
+import Dynamic from './feature/components/Dynamic';
 
 function App() {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
@@ -22,6 +23,7 @@ function App() {
         <Flex direction="column">
           <Header>
             <Nav isDark={theme === 'light' ? false : true} handleDark={toggleTheme} />
+            <Dynamic style={{textAlign: 'center'}} as="h1">Welcome to react-todos</Dynamic>
           </Header>
           <main className="container">
             <Flex direction="column" gap="size-100">
@@ -35,8 +37,6 @@ function App() {
                 <Spectrum />
               </Route>
             </Flex>
-            <input type="checkbox" id="promo"></input>
-            <label>Promo</label>
           </main>
           <View paddingY="size-250">
             <Footer><Foot /></Footer>
