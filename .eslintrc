@@ -1,6 +1,10 @@
 {
-  "extends": ["plugin:jsx-a11y/strict" ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/strict"
+  ],
   "rules": {
-    // Add custom rules here
+    "react/no-unescaped-entities": "off"
   }
 }
