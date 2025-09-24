@@ -1,37 +1,52 @@
-import React, { Component } from 'react';
-import { Button, ActionButton } from '@react-spectrum/button';
-import { ActionMenu, Item } from '@react-spectrum/menu';
-import { Text, Heading } from '@react-spectrum/text';
-import { Flex } from '@react-spectrum/layout';
-import { ListBox, Section } from '@react-spectrum/listbox';
-import { TagGroup } from '@react-spectrum/tag';
-import { Calendar, RangeCalendar } from '@react-spectrum/calendar';
-import { DatePicker } from '@react-spectrum/datepicker';
-import { Form } from '@react-spectrum/form';
-import { TextField } from '@react-spectrum/textfield';
-import { Checkbox } from '@react-spectrum/checkbox';
-import { Slider } from '@react-spectrum/slider';
-import { RadioGroup, Radio } from '@react-spectrum/radio';
-import { Switch } from '@react-spectrum/switch';
-import { AlertDialog, DialogTrigger } from '@react-spectrum/dialog';
-import { ProgressBar, ProgressCircle } from '@react-spectrum/progress';
-import { Link } from '@react-spectrum/link';
-import Navbar from '../feature/elements/Navbar';
+import { Component } from "react";
+import { Button, ActionButton } from "@react-spectrum/button";
+import { ActionMenu, Item } from "@react-spectrum/menu";
+import { Text, Heading } from "@react-spectrum/text";
+import { Flex } from "@react-spectrum/layout";
+import { ListBox, Section } from "@react-spectrum/listbox";
+import { TagGroup } from "@react-spectrum/tag";
+import { Calendar, RangeCalendar } from "@react-spectrum/calendar";
+import { DatePicker } from "@react-spectrum/datepicker";
+import { Form } from "@react-spectrum/form";
+import { TextField } from "@react-spectrum/textfield";
+import { Checkbox } from "@react-spectrum/checkbox";
+import { Slider } from "@react-spectrum/slider";
+import { RadioGroup, Radio } from "@react-spectrum/radio";
+import { Switch } from "@react-spectrum/switch";
+import { AlertDialog, DialogTrigger } from "@react-spectrum/dialog";
+import { ProgressBar, ProgressCircle } from "@react-spectrum/progress";
+import { Link } from "@react-spectrum/link";
+import Navbar from "../feature/elements/Navbar";
 
 export default class Spectrum extends Component {
   render() {
     return (
       <section>
         <Heading level={1}>Other Components</Heading>
-        <Flex direction="column" gap="size-250" justifyContent="space-around" height="100%">
+        <Flex
+          direction="column"
+          gap="size-250"
+          justifyContent="space-around"
+          height="100%"
+        >
           <Text>List of components react-spectrum offers</Text>
           <Navbar />
           <Flex wrap gap="size-250">
-            <Button width="size-100" variant="accent" style="fill">Save</Button>
-            <Button width="size-100" variant="accent" style="outline">Save</Button>
-            <Button width="size-100" variant="secondary" style="fill">Save</Button>
-            <Button width="size-100" variant="negative" style="fill">Save</Button>
-            <Button  width="size-100" variant="accent" isDisabled>Save</Button>
+            <Button width="size-100" variant="accent" style="fill">
+              Save
+            </Button>
+            <Button width="size-100" variant="accent" style="outline">
+              Save
+            </Button>
+            <Button width="size-100" variant="secondary" style="fill">
+              Save
+            </Button>
+            <Button width="size-100" variant="negative" style="fill">
+              Save
+            </Button>
+            <Button width="size-100" variant="accent" isDisabled>
+              Save
+            </Button>
           </Flex>
           <Flex wrap gap="size-250">
             <ActionMenu width="size-100">
@@ -59,9 +74,7 @@ export default class Spectrum extends Component {
             </ListBox>
           </Flex>
           <Flex gap="size-250">
-            <TagGroup
-              label="Categories"
-              aria-label="TagGroup with action">
+            <TagGroup label="Categories" aria-label="TagGroup with action">
               <Item>News</Item>
               <Item>Travel</Item>
               <Item>Gaming</Item>
@@ -91,19 +104,24 @@ export default class Spectrum extends Component {
               title="Save file"
               primaryActionLabel="Save"
               cancelLabel="Cancel"
-              autoFocusButton="primary">
+              autoFocusButton="primary"
+            >
               A file with the same name already exists. Overwrite?
             </AlertDialog>
           </DialogTrigger>
           <ProgressBar label="Loading…" isIndeterminate />
           <ProgressCircle aria-label="Loading…" isIndeterminate />
           <Link>
-            <a href="https://spectrum.adobe.com/" target="_blank" rel="noreferrer">
+            <a
+              href="https://spectrum.adobe.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
               See full documentation here.
             </a>
           </Link>
         </Flex>
       </section>
-    )
+    );
   }
 }

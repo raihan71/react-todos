@@ -1,49 +1,57 @@
-import { Provider } from '@react-spectrum/provider';
-import { theme as defaultTheme } from '@react-spectrum/theme-default';
-import { Footer, Header, View} from '@react-spectrum/view';
-import { Flex } from '@react-spectrum/layout';
-import Nav from './feature/elements/Nav';
-import Foot from './feature/elements/Foot';
-import { useDarkMode } from './hooks/useDarkMode';
-import Route from './feature/components/Route';
-import Home from './views/home';
-import About from './views/about';
-import Spectrum from './views/spectrum';
-import Dynamic from './feature/components/Dynamic';
+import { Provider } from "@react-spectrum/provider";
+import { theme as defaultTheme } from "@react-spectrum/theme-default";
+import { Footer, Header, View } from "@react-spectrum/view";
+import { Flex } from "@react-spectrum/layout";
+import Nav from "./feature/elements/Nav";
+import Foot from "./feature/elements/Foot";
+import { useDarkMode } from "./hooks/useDarkMode";
+import Route from "./feature/components/Route";
+import Home from "./views/home";
+import About from "./views/about";
+import Spectrum from "./views/spectrum";
+// import Dynamic from "./feature/components/Dynamic";
 
-function App() {
+const App = () => {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
 
   if (!componentMounted) {
-    return <div />
-  };
+    return <div />;
+  }
 
   return (
     <Provider theme={defaultTheme} colorScheme={theme}>
-        <Flex direction="column">
-          <Header>
-            <Nav isDark={theme === 'light' ? false : true} handleDark={toggleTheme} />
-            <Dynamic style={{textAlign: 'center'}} as="h1">Welcome to react-todos</Dynamic>
-          </Header>
-          <main className="container">
-            <Flex direction="column" gap="size-100">
-              <Route path="/">
-                <Home />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/component">
-                <Spectrum />
-              </Route>
-            </Flex>
-          </main>
-          <View paddingY="size-250">
-            <Footer><Foot /></Footer>
-          </View>
-        </Flex>
+      <Flex direction="column">
+        <Header>
+          <Nav
+            isDark={theme === "light" ? false : true}
+            handleDark={toggleTheme}
+          />
+          <h1 style={{ textAlign: "center" }}>Welcome to react todos</h1>
+          {/* <Dynamic style={{ textAlign: "center" }} as="h1">
+            Welcome to react-todos
+          </Dynamic> */}
+        </Header>
+        <main className="container">
+          <Flex direction="column" gap="size-100">
+            <Route path="/">
+              <Home />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/component">
+              <Spectrum />
+            </Route>
+          </Flex>
+        </main>
+        <View paddingY="size-250">
+          <Footer>
+            <Foot />
+          </Footer>
+        </View>
+      </Flex>
     </Provider>
   );
-}
+};
 
 export default App;
