@@ -1,11 +1,24 @@
-import { render, screen } from '@testing-library/react';
-import React from 'react';
-import Foot from '../Foot';
+import { render, screen } from "@testing-library/react";
+import Foot from "../Foot";
 
-describe('Footer tests', () => {
-    it('should contains the footer', () => {
-        render(<Foot />);
-        const heading = screen.getByText(/All rights reserved/i);
-        expect(heading).toBeInTheDocument()
+describe("Footer tests", () => {
+  describe("Footer tests", () => {
+    test("renders footer text", () => {
+      render(<Foot />);
+      expect(screen.getByText(/by Raihan Nismara/i)).toBeInTheDocument();
+      expect(screen.getByText(/All rights reserved/i)).toBeInTheDocument();
     });
+
+    test("has container class", () => {
+      const { container } = render(<Foot />);
+      const el = container.querySelector(".container");
+      expect(el).not.toBeNull();
+    });
+
+    test('renders with role "footer" (footer)', () => {
+      render(<Foot />);
+      const footer = screen.getByRole("footer");
+      expect(footer).toBeInTheDocument();
+    });
+  });
 });

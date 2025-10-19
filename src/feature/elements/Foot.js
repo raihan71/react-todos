@@ -1,8 +1,8 @@
 const Foot = () => {
   return (
-    <div className="container">
+    <footer role="footer" className="container">
       &lt;/&gt; by Raihan Nismara &copy; All rights reserved.
-    </div>
+    </footer>
   );
 };
 
