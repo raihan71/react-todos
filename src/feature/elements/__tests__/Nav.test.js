@@ -17,4 +17,10 @@ describe("Nav tests", () => {
     fireEvent.click(nav);
     expect(nav).toBeInTheDocument();
   });
+
+  // it("should have no accessibility violations", async () => {
+  //   const { container } = render(<About />);
+  //   const results = await axe(container);
+  //   expect(results).toHaveNoViolations();
+  // });
 });
