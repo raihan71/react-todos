@@ -1,7 +1,6 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 const Link = ({ className, href, children }) => {
-
   const onClick = (event) => {
     // if ctrl or meta key are held on click, allow default behavior of opening link in new tab
     if (event.metaKey || event.ctrlKey) {
@@ -14,7 +13,7 @@ const Link = ({ className, href, children }) => {
     window.history.pushState({}, "", href);
 
     // communicate to Routes that URL has changed
-    const navEvent = new PopStateEvent('popstate');
+    const navEvent = new PopStateEvent("popstate");
     window.dispatchEvent(navEvent);
   };
 
@@ -23,6 +22,12 @@ const Link = ({ className, href, children }) => {
       {children}
     </a>
   );
+};
+
+Link.propTypes = {
+  className: PropTypes.string,
+  href: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Link;
